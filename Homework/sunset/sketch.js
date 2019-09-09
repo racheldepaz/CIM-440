@@ -11,8 +11,8 @@ function setup() {
   // put setup code here
   createCanvas(windowWidth, windowHeight); //create canvas the size of user's browser
 
-  topSky = color(107, 0, 89);
-  bottomSky = color(217, 145, 13);
+  topSky = color(random(90,120), 0, random(45, 90));
+  bottomSky = color(random(180, 220), random(100, 150), 13);
   waterColor = color(113, 191, 201);
   setGradient(0, 0, windowWidth, windowHeight, topSky, bottomSky, Y_AXIS);
 
