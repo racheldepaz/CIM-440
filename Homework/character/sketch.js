@@ -3,8 +3,10 @@ function setup() {
 
   var eyeWidth = windowWidth / 10;
   var eyeHeight = windowHeight / 10;
+  var winWidth = 1250;
+  var winHeight = 900;
 
-  createCanvas(windowWidth, windowHeight); //i used windowWidth and windowHeight as my other two variables
+  createCanvas(winWidth, winHeight); 
   let topColor = color(233, 255, 201);
   //let botColor = color(255, 247, 186);
   //createGradient(0, 0, windowWidth, windowHeight, topColor, botColor);
