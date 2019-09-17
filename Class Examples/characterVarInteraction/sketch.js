@@ -29,9 +29,13 @@ function draw() {
   // put drawing code here
   background(255);
 
-  if (mouseX >= canvasWidth / 2) {
+  if (mouseX > canvasWidth / 2) {
     console.log("Currently on right hand side");
     background("brown");
+  }
+  else if (mouseX == canvasWidth / 2) {
+    console.log("center");
+    background("blue");
   } else {
     console.log("Currently on left hand side");
     background("grey");
