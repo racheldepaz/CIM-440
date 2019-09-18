@@ -93,6 +93,4 @@ function setGradient(x, y, w, h, topC, botC) {
 function keyPressed() {
   for (let i = 0; i < key; i++)
     randomCloud();
-
-  console.log("key: " + key);
 }
