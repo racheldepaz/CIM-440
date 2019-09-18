@@ -95,7 +95,4 @@ function keyPressed() {
     randomCloud();
 
   console.log("key: " + key);
-
-  if(key == "c")
-  //clear
 }
