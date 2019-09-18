@@ -1,35 +1,42 @@
 var cloudCounter = 0;
-var cloudScale = 50;
 var cloudPosX = 50;
 var cloudPosY = 50;
 const Y_AXIS = 1;
 
-
-//Reference image
 function setup() {
   let yellow = color(255, 204, 0);
   // put setup code here
   createCanvas(windowWidth, windowHeight); //create canvas the size of user's browser
 
-  topSky = color(random(90,120), 0, random(45, 90));
+  //randomly generate sunset colors
+  //if it's sunset (by button press), make the sunset sky
+  topSky = color(random(90, 120), 0, random(45, 90));
   bottomSky = color(random(180, 220), random(100, 150), 13);
   waterColor = color(113, 191, 201);
   setGradient(0, 0, windowWidth, windowHeight, topSky, bottomSky, Y_AXIS);
 
+
   noStroke();
+  //draw water
   fill(waterColor);
   rect(0, windowHeight - windowHeight / 5, windowWidth, windowHeight / 5);
 
+  //draw sun
   fill(yellow);
-
   arc(windowWidth / 2, windowHeight - windowHeight / 5, windowWidth / 2, windowHeight / 5, PI, 2 * PI); //draw the sun
-
   line(windowWidth / 2, 20, 20);
 }
 
 //randomly generate clouds
 function drawCloud() {
-  fill("white");
+  //the value subtracted to the RGB value
+  // to create variance in cloud color
+  var cloudModifier = random(0, 66);
+  let cloudC = color(255 - cloudModifier, 255 - cloudModifier, 255 - cloudModifier);
+  fill(cloudC);
+
+  //how  big the clouds are
+  var cloudScale = random(50, 75);
 
   //the top row of cloud fluff
   ellipse(cloudPosX, cloudPosY, cloudScale, cloudScale);
@@ -46,17 +53,24 @@ function drawCloud() {
 }
 
 function randomCloud() {
-  if (cloudCounter <= 5) {
-    cloudPosX += random(-50, windowWidth);
-    cloudPosY += random(-50, windowHeight / 2.5);
-    cloudCounter++;
-    drawCloud();
-  }
+  cloudPosX += random(-50, windowWidth);
+  cloudPosY += random(-50, windowHeight / 2.5);
+  cloudCounter++;
+  drawCloud();
+
 }
 
 
 function draw() {
-  randomCloud();
+  console.log(mouseX + ", " + mouseY);
+  console.log(windowHeight - windowHeight / 5);
+
+  //moving the mouse in the x direction changes the color of the water
+  if (mouseY < windowHeight - windowHeight / 5) {
+    waterColor = color(113 - (mouseX / 100), 191, 201);
+    fill(waterColor);
+    rect(0, windowHeight - windowHeight / 5, windowWidth, windowHeight / 5);
+  }
 }
 
 
@@ -73,4 +87,15 @@ function setGradient(x, y, w, h, topC, botC) {
     stroke(c);
     line(x, i, x + w, i);
   }
+}
+
+//type the number of clouds you want to draw
+function keyPressed() {
+  for (let i = 0; i < key; i++)
+    randomCloud();
+
+  console.log("key: " + key);
+
+  if(key == "c")
+  //clear
 }
