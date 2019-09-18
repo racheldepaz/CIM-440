@@ -3,13 +3,13 @@
 
 var puppyImage;
 
-let dogWords = ["wow", "much doge", "very nice", "puppy"];
+let dogWords = ["wow", "much doge", "very nice", "puppy", "woof", "much soft", "very cuddle"];
 var index;
 var drawCount;
 
 //use to set load media
 function preload() {
-   puppyImage = loadImage("puppy.jpeg");
+  puppyImage = loadImage("puppy.jpeg");
 }
 
 function setup() {
@@ -24,15 +24,14 @@ function setup() {
 function draw() {
   //only divide proportionally
   drawCount++;
-  image(puppyImage, random(0, windowWidth), random(0, windowHeight), puppyImage.width/random(1, 10), puppyImage.height/random(1, 10));
 
-  //if(drawCount %2 == 0 ) {
-  var index = int(random(0, dogWords.length));
+  if (drawCount % 2 == 0) {
+    image(puppyImage, random(0, windowWidth), random(0, windowHeight), puppyImage.width / random(1, 10), puppyImage.height / random(1, 10));
 
-  textSize(int(random(32, 50)));
-  fill(random(0, 255), random(0, 255), random(0, 255));
-  //text('word', 10, 30);
-  text(dogWords[index], random(0, windowWidth), random(0, windowHeight), random(0, windowWidth), random(0, windowHeight));
-  //fill(0, 102, 153);
-//}
+    var index = int(random(0, dogWords.length));
+
+    textSize(int(random(32, 50)));
+    fill(random(0, 255), random(0, 255), random(0, 255));
+    text(dogWords[index], random(0, windowWidth), random(0, windowHeight), random(0, windowWidth), random(0, windowHeight));
+  }
 }
