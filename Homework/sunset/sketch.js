@@ -11,7 +11,7 @@ function setup() {
   // put setup code here
   createCanvas(windowWidth, windowHeight); //create canvas the size of user's browser
 
-  topSky = color(random(90,120), 0, random(45, 90));
+  topSky = color(random(90, 120), 0, random(45, 90));
   bottomSky = color(random(180, 220), random(100, 150), 13);
   waterColor = color(113, 191, 201);
   setGradient(0, 0, windowWidth, windowHeight, topSky, bottomSky, Y_AXIS);
@@ -21,7 +21,6 @@ function setup() {
   rect(0, windowHeight - windowHeight / 5, windowWidth, windowHeight / 5);
 
   fill(yellow);
-
   arc(windowWidth / 2, windowHeight - windowHeight / 5, windowWidth / 2, windowHeight / 5, PI, 2 * PI); //draw the sun
 
   line(windowWidth / 2, 20, 20);
@@ -54,11 +53,9 @@ function randomCloud() {
   }
 }
 
-
 function draw() {
   randomCloud();
 }
-
 
 //I used the p5 reference for this method.
 //(x,y) where the gradient begins

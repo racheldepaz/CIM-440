@@ -56,7 +56,6 @@ function draw() {
 
   if (index == 0) {
     currentAnimal = puppy;
-
     shitPostText("puppy");
   } else if (index == 1) {
     shitPostText("dino");
