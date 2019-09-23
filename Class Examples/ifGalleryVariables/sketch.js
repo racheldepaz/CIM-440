@@ -1,6 +1,8 @@
 // Sloth image "IMG_3883" by JohnHedtke is licensed under CC BY-NC-SA 2.0 https://search.creativecommons.org/photos/217faedd-d06a-48ba-91f7-f4d4c6dafa04
 // Puppy image "puppies" by www.petian.net is licensed under CC BY-NC-ND 2.0  https://search.creativecommons.org/photos/4f271583-e45d-4faf-bfc8-7291c7c1e3c3
 // dinosaur "Rupenhorn Dinosaur #4" by Kristian_Laban is licensed under CC BY-NC 2.0 https://search.creativecommons.org/photos/96213ba5-e9b6-4f2f-91e4-da28b9fcad22
+// sunset "Sunset" by tjspindler is licensed under CC BY-NC-ND 2.0
+// skyline "skyline" by barnyz is licensed under CC BY-NC-ND 2.0
 
 var puppy, dinosaur, sloth;
 var currentAnimal;
@@ -13,6 +15,8 @@ function preload() {
   puppy = loadImage("images/puppy.jpg");
   dinosaur = loadImage("images/dinosaur.jpg");
   sloth = loadImage("images/sloth.jpg");
+  sunset = loadImage("images/sunset.jpg");
+  skyline = loadImage("images/skyline.jpg");
 }
 
 function setup() {
@@ -32,7 +36,18 @@ function setup() {
   sButton = createButton("Sloth");
   sButton.mousePressed(function() {
     index = 2;
+  });
+
+  skyButton = createButton("Skyline");
+  skyButton.mousePressed(function() {
+    index = 3;
   })
+
+  sunButton = createButton("Sunset");
+  sunButton.mousePressed(function() {
+    index = 4;
+  })
+
 }
 
 function shitPostText(yeet) {
@@ -60,9 +75,15 @@ function draw() {
   } else if (index == 1) {
     shitPostText("dino");
     currentAnimal = dinosaur;
-  } else {
+  } else if (index == 2) {
     shitPostText("sloth");
     currentAnimal = sloth;
+  }else if (index == 3) {
+    shitPostText("skyline");
+    currentAnimal = skyline;
+  } else {
+    shitPostText("sunset");
+    currentAnimal = sunset;
   }
   image(currentAnimal, 0, 0, currentAnimal.width / 4, currentAnimal.height / 4);
 
