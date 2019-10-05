@@ -52,11 +52,11 @@ function draw() {
     if (answers[currentQuestion] == currentOption) {
       answerText = "Correct";
       currentQuestion++;
-      currentOption = -1;
-      if(currentQuestion >= questions.length)
+      if (currentQuestion >= questions.length)
         currentQuestion = 0;
     } else {
       answerText = "Try again.";
     }
-  }
+    currentOption = -1;
+  }//end of currentoption loop
 }
