@@ -1,56 +1,36 @@
-let myFont;
-var index;
+var s = function(p) { // p could be any variable name
+  var x = 100;
+  var y = 100;
+  p.setup = function() {
+    p.createCanvas(400, 200);
+  };
 
-function preload() {
-  myFont = [loadFont("fonts/antaro.otf"), loadFont("fonts/AnotherDanger-Demo.otf"),
-    loadFont("fonts/AnotherDangerSlanted-Demo.otf")
-  ];
-}
+  p.draw = function() {
+    p.background(0);
+    p.fill(255);
+    p.rect(x, y, 50, 50);
+  };
+};
+var myp5 = new p5(s, 'c1');
 
-function setup() {
-  index = 0;
-  createCanvas(windowWidth, windowHeight, WEBGL);
+// Sketch Two
+var t = function(p) {
+  var x = 100.0;
+  var y = 100;
+  var speed = 2.5;
+  p.setup = function() {
+    p.createCanvas(400, 200, 'WEBGL');
+  };
 
-}
+  p.draw = function() {
+    p.background(100);
+   p.fill(1);
+    x += speed;
+    if (x > p.width) {
+      x = 0;
+    }
+   p.sphere(30);
 
-function draw() {
-  boxes();
-}
-
-function mousePressed() {
-  myFont[index++];
-  clear();
-  textStuff();
-}
-
-function textStuff() {
-  //fill('#ED225D');
-  if(index == myFont.size)
-  textSize(36);
-  textFont(myFont[index]);
-  text('p5.js', 10, 50);
-}
-
-function boxes() {
-  push();
-  translate(100, 100, -100);
-  rotate(PI / 4, [1, 1, 0]);
-  box(2000, 1000, 3000);
-  pop();
-  push();
-  translate(100, 100, -100);
-  rotate(PI / 4, [1, 1, 0]);
-  box(30, 50, 100)
-  pop();
-}
-
-function shape() {
-  strokeWeight(10);
-  stroke("#fae");
-
-  beginShape();
-  vertex(100, 23, -100);
-  vertex(200, 23, -50);
-  vertex(150, 45, -100);
-  endShape();
-}
+  };
+};
+var myp5 = new p5(t, 'c2');
