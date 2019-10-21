@@ -8,7 +8,7 @@ let capture;
 let snowflakes = []; //snowflake array
 
 function setup() {
-  createCanvas(500, 500);
+  createCanvas(windowWidth, windowHeight, WEBGL);
   capture = createCapture(VIDEO);
   capture.size(480, 480);
   capture.hide();
