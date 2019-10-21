@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="transparent-background">
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      background-color: rgba(0, 0, 0, 0);
+    }
+  </style>
+  <script src="https://unpkg.com/@magicleap/prismatic"></script>
+  <title>Hello, Prismatic!</title>
+  <script src="p5.js"></script>
+  <script src="prismatic.min.js"></script>
+  <script src="p5.dom.js"></script>
+  <script src="p5.sound.js"></script>
+  <script src="sketch.js"></script>
+</head>
+
+<body>
+  <ml-model
+    id="snowman"
+    src="snowman.fbx"
+    style="width: 300px; height: 300px;"
+    z-offset="-500px"
+    extractable="true"
+    rotate-by-angles="
+          angles: 0 -5 0;
+          duration: 30s;
+          track: 1;">
+</ml-model>
+</body>
+
+</html>
