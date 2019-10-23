@@ -9,15 +9,15 @@ let snowflakes = []; //snowflake array
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
-  capture = createCapture(VIDEO);
-  capture.size(480, 480);
-  capture.hide();
+  //capture = createCapture(VIDEO);
+  //capture.size(480, 480);
+  //capture.hide();
 }
 
 function draw() {
   clear();
-  translate(-width / 2, -height / 2, 0);
-  image(capture, 0, 0, width, width * capture.height / capture.width);
+  //translate(-width / 2, -height / 2, 0);
+  //image(capture, 0, 0, width, width * capture.height / capture.width);
 
   noStroke();
   fill(242, 247, 247); //snoflake color
