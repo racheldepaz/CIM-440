@@ -4,20 +4,22 @@
 //Credit for snowman.fbx: Snowman by Jakers_H : https://poly.google.com/view/crZrU-sG1er
 //Credit for snowytrees.gltf: Snowy Trees by Daniel Melchior: https://poly.google.com/view/4yANmlVa-5p
 
-//let capture;
+let capture;
 let snowflakes = []; //snowflake array
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
-  //capture = createCapture(VIDEO);
-  //capture.size(480, 480);
-  //capture.hide();
+  //fill(1,1,1);
+  capture = createCapture(VIDEO);
+  capture.size(480, 480);
+  capture.hide();
+  background(1,1,1);
 }
 
 function draw() {
   clear();
-  //translate(-width / 2, -height / 2, 0);
-  //image(capture, 0, 0, width, width * capture.height / capture.width);
+  translate(-width / 2, -height / 2, 0);
+  image(capture, 0, 0, width, width * capture.height / capture.width);
 
   noStroke();
   fill(242, 247, 247); //snoflake color
