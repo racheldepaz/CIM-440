@@ -30,7 +30,7 @@ function goto() {
 
 function draw() {
   clear();
-  translate(-width / 2, -height / 2, 0);
+  //translate(-width / 2, -height / 2, 0);
   image(capture, 0, 0, width, width * capture.height / capture.width);
 
   noStroke();
