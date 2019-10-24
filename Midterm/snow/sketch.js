@@ -12,16 +12,16 @@ function setup() {
   //fill(1,1,1);
   //song = loadSound('holidaymusic.mp3'); //load song
   //song.play();
-  capture = createCapture(VIDEO);
-  capture.size(480, 480);
-  capture.hide();
-  background(1,1,1);
+//  capture = createCapture(VIDEO);
+  //capture.size(480, 480);
+  //capture.hide();
+  //background(1,1,1);
 }
 
 function draw() {
   clear();
-  translate(-width / 2, -height / 2, 0);
-  image(capture, 0, 0, width, width * capture.height / capture.width);
+  //translate(-width / 2, -height / 2, 0);
+  //image(capture, 0, 0, width, width * capture.height / capture.width);
 
   noStroke();
   fill(242, 247, 247); //snoflake color
