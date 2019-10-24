@@ -1,9 +1,9 @@
 var button1;
-
+let song;
 
 function setup() {
+  song = loadSound('assets/lucky_dragons_-_power_melody.mp3');
   createCanvas(400, 400);
-
   button1 = new hitZoneObject(100, 100, 50, "pink");
 }
 

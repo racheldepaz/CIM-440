@@ -10,6 +10,8 @@ let snowflakes = []; //snowflake array
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
   //fill(1,1,1);
+  song = loadSound('holidaymusic.mp3'); //load song
+  song.play();
   capture = createCapture(VIDEO);
   capture.size(480, 480);
   capture.hide();
