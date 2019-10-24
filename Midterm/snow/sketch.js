@@ -6,22 +6,32 @@
 
 let capture;
 let snowflakes = []; //snowflake array
+var button;
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
   //fill(1,1,1);
   //song = loadSound('holidaymusic.mp3'); //load song
   //song.play();
-//  capture = createCapture(VIDEO);
-  //capture.size(480, 480);
-  //capture.hide();
-  //background(1,1,1);
+  capture = createCapture(VIDEO);
+  capture.size(480, 480);
+  capture.hide();
+
+  button = createButton('GO TO MODELS');
+  button.position(0,0);
+  button.size(100,100);
+  button.mousePressed(goto);
+  background(1,1,1);
+}
+
+function goto() {
+  window.open("http://racheldepaz.github.io/creative-coding/MagicLeap/hello-prismatic/index.html");
 }
 
 function draw() {
   clear();
-  //translate(-width / 2, -height / 2, 0);
-  //image(capture, 0, 0, width, width * capture.height / capture.width);
+  translate(-width / 2, -height / 2, 0);
+  image(capture, 0, 0, width, width * capture.height / capture.width);
 
   noStroke();
   fill(242, 247, 247); //snoflake color
