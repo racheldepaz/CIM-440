@@ -30,7 +30,7 @@ function setup() {
 
 function goto() {
   window.open("http://racheldepaz.github.io/creative-coding/MagicLeap/hello-prismatic/index.html");
-  window.close(); //close the current window
+//  window.close(); //close the current window jk this does not work
 }
 
 function draw() {
