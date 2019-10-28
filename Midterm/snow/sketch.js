@@ -1,6 +1,5 @@
 //using snowflake example: https://p5js.org/examples/simulate-snowflakes.html
 
-
 //Credit for snowman.fbx: Snowman by Jakers_H : https://poly.google.com/view/crZrU-sG1er
 //Credit for snowytrees.gltf: Snowy Trees by Daniel Melchior: https://poly.google.com/view/4yANmlVa-5p
 
