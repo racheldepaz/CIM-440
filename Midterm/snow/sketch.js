@@ -16,9 +16,9 @@ function setup() {
   //fill(1,1,1);
   //load song
   song.play();
-  capture = createCapture(VIDEO);
+/*  capture = createCapture(VIDEO);
   capture.size(480, 480);
-  capture.hide();
+  capture.hide();*/
 
   button = createButton('GO TO MODELS');
   button.position(0, 0);
@@ -35,7 +35,7 @@ function goto() {
 function draw() {
   clear();
   translate(-width / 2, -height / 2, 0);
-  image(capture, 0, 0, width, width * capture.height / capture.width);
+//  image(capture, 0, 0, width, width * capture.height / capture.width);
 
   noStroke();
   fill(242, 247, 247); //snoflake color
