@@ -1,23 +1,17 @@
 let classifier, userimg, img;
-var count;
+var enabled;
 console.log('ml5 version:', ml5.version);
-
-
 
 function preload() {
   classifier = ml5.imageClassifier('MobileNet');
 
-  //img = loadImage("assets/cutedog.jpg");
   input = createFileInput(handleFile);
   input.position(0, 0);
-
 }
 
 function setup() {
-  var width = windowWidth;
+  enabled = true;
   var cnv = createCanvas(windowWidth / 4, windowHeight / 4);
-
-  count = 0;
 
   cnv.id("rachel's amazing canvas");
 
@@ -60,25 +54,22 @@ function gotResult(error, results) {
 }
 
 function draw() {
-  if (userimg != null && count == 0) {
+  if (userimg != null && enabled == true) {
     clear();
-    count++;
-    image(img, 0, 0, 400, 400);
-    img.show();
-    userimg.hide();
-    classifier.classify(img, gotResult);
+    enabled = false;
+    image(userimg, 0, 0, 400, 400);
+    classifier.classify(userimg, gotResult);
   }
 }
 
 function handleFile(file) {
   console.log(file);
-  count = 0;
+  enabled = true;
   select("#container1").html('Handling the image...hold on!')
   select("#container2").html('');
   if (file.type == 'image') {
     userimg = createImg(file.data, '');
     userimg.hide();
-    img = userimg;
   } else {
     userimg = null;
   }
