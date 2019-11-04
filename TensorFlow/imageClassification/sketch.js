@@ -54,11 +54,16 @@ function gotResult(error, results) {
 }
 
 function draw() {
-  if (userimg != null && enabled == true) {
+  // if (userimg != null && enabled == true) {
+  //   clear();
+  //   enabled = false;
+  //   image(userimg, 0, 0, 400, 400);
+  //   classifier.classify(userimg, gotResult);
+  // }
+
+  if (userimg) {
     clear();
-    enabled = false;
-    image(userimg, 0, 0, 400, 400);
-    classifier.classify(userimg, gotResult);
+    image(userimg, 0, 0, width, height);
   }
 }
 
@@ -70,6 +75,7 @@ function handleFile(file) {
   if (file.type == 'image') {
     userimg = createImg(file.data, '');
     userimg.hide();
+    classifier.classify(userimg, gotResult);
   } else {
     userimg = null;
   }
