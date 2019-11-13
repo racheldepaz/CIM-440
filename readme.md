@@ -12,3 +12,8 @@ Experiments using p5js and Magic Leap's Prismatic API.
 ## Midterm
 Midterm project completed for a grade. 
 
+## Tensorflow
+Experiments using ml5js (tensorfow for p5) and p5js
+
+## Final
+Using React to create a website
