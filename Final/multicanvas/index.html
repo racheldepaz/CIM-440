@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>p5.js example</title>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      background-color: #ffffe8;
+    }
+  </style>
+
+  <script src="p5.js"></script>
+  <script src="three.js"></script>
+  <script src="p5.dom.js"></script>
+  <script src="p5.sound.js"></script>
+  <script src="sketch.js"></script>
+
+  <style>
+    #stage {
+      width: auto;
+      height: 320px;
+      position: relative;
+    }
+
+    canvas {
+      position: absolute;
+      top: 80%;
+      left: 35%;
+    }
+
+    #welcome-layer {
+      width: 480;
+      height: 320;
+      position: absolute;
+      transform: translateX(0px) scale(1.5);
+      z-index: 99;
+      border: 2px solid gray;
+      transition: all .5s;
+    }
+
+    #weather-layer {
+      width: 480;
+      height: 320;
+      position: absolute;
+      transform: translateX(-270px);
+      z-index: 9;
+      border: 2px solid gray;
+      transition: all .5s;
+    }
+
+    #time-layer {
+      width: 480;
+      height: 320;
+      position: absolute;
+      transform: translateX(270px);
+      z-index: 9;
+      border: 2px solid gray;
+      transition: all .5s;
+    }
+
+    #pre {
+      height: 30px;
+      width: 100px;
+      border: 2px solid gray;
+      font-family: arial;
+      font-size: 15px;
+      color: gray;
+      text-align: center;
+      line-height: 30px;
+      position: absolute;
+      top: 50%;
+      left: 20%;
+    }
+
+    #pre:hover {
+      cursor: pointer;
+    }
+
+    #nex {
+      height: 30px;
+      width: 100px;
+      border: 2px solid gray;
+      font-family: arial;
+      font-size: 15px;
+      color: gray;
+      text-align: center;
+      line-height: 30px;
+      position: absolute;
+      top: 50%;
+      right: 20%;
+    }
+
+    #nex:hover {
+      cursor: pointer;
+    }
+  </style>
+
+
+</head>
+
+<body>
+  <div id="stage">
+    <canvas id="welcome-layer" width="480" height="320"></canvas>
+    <canvas id="weather-layer" width="480" height="320"></canvas>
+    <canvas id="time-layer" width="480" height="320"></canvas>
+    <button id="pre" PREVIOUS</button> <button id="nex" NEXT</button> </div> </body> </html>
