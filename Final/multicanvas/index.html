@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>p5.js example</title>
+  <title>Final Project</title>
   <style>
     body {
       padding: 0;
@@ -12,9 +12,8 @@
       background-color: #ffffe8;
     }
   </style>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="p5.js"></script>
-  <script src="three.js"></script>
   <script src="p5.dom.js"></script>
   <script src="p5.sound.js"></script>
   <script src="sketch.js"></script>
@@ -27,14 +26,14 @@
     }
 
     canvas {
-      position: absolute;
+      /* position: absolute;
       top: 80%;
-      left: 35%;
+      left: 35%; */
     }
 
     #welcome-layer {
-      width: 480;
-      height: 320;
+      width: 720px;
+      height: 480px;
       position: absolute;
       transform: translateX(0px) scale(1.5);
       z-index: 99;
@@ -43,8 +42,8 @@
     }
 
     #weather-layer {
-      width: 480;
-      height: 320;
+      width: 720px;
+      height: 480px;
       position: absolute;
       transform: translateX(-270px);
       z-index: 9;
@@ -53,8 +52,8 @@
     }
 
     #time-layer {
-      width: 480;
-      height: 320;
+      width: 720px;
+      height: 480px;
       position: absolute;
       transform: translateX(270px);
       z-index: 9;
@@ -71,9 +70,9 @@
       color: gray;
       text-align: center;
       line-height: 30px;
-      position: absolute;
+      /* position: absolute;
       top: 50%;
-      left: 20%;
+      left: 20%; */
     }
 
     #pre:hover {
@@ -89,13 +88,31 @@
       color: gray;
       text-align: center;
       line-height: 30px;
-      position: absolute;
+      /* transform: translateX(100px); */
+      /* position: relative;
       top: 50%;
-      right: 20%;
+      right: 20%; */
     }
 
     #nex:hover {
       cursor: pointer;
+    }
+
+    #slideContainer {
+      width: 729px;
+      margin: 0 auto;
+
+    }
+
+    #buttons {
+      width: 480px;
+      margin: 0 auto;
+      /* margin-top: 200px; */
+      transform: translateY(630px);
+    }
+
+    main {
+      margin-top: 200px;
     }
   </style>
 
@@ -103,8 +120,35 @@
 </head>
 
 <body>
-  <div id="stage">
-    <canvas id="welcome-layer" width="480" height="320"></canvas>
-    <canvas id="weather-layer" width="480" height="320"></canvas>
-    <canvas id="time-layer" width="480" height="320"></canvas>
-    <button id="pre" PREVIOUS</button> <button id="nex" NEXT</button> </div> </body> </html>
+
+  <main>
+    <div id="slideContainer">
+
+      <div id="welcome-layer">
+        <img src="welcome.jpg" height="100%" width="100%" />
+      </div>
+      <div id="weather-layer">
+        <img src="weather.png" height="100%" width="100%" />
+        <script src="weather.js"></script>
+      </div>
+      <div id="time-layer">
+        <img src="time.png" height="100%" width="100%" />
+      </div>
+
+    </div>
+
+    <div id="buttons">
+      <div id="pre">PREVIOUS</div>
+
+      <div id="nex">NEXT</div>
+    </div>
+
+
+
+  </main>
+
+
+
+</body>
+
+</html>
