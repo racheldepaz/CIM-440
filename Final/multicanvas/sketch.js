@@ -57,30 +57,31 @@ $(document).ready(function() {
 });
 
 //WEATHER
-var weather = function(p) { // p could be any variable name
-  var x = 100;
-  var y = 100;
+/*var weather = function(p) { // p could be any variable name
   p.setup = function() {
     var cnv = p.createCanvas(720, 480);
     cnv.parent("weather-layer");
   };
 
   p.draw = function() {
-    p.background(0);
-    p.fill(255);
-    p.rect(x, y, 50, 50);
+    p.background(255);
+    //p.fill("white");
+    //p.rect(x, y, 50, 50);
   };
 };
-var myp5 = new p5(weather, 'weather-layer');
+var myp5 = new p5(weather, 'weather-layer');*/
 
 //WELCOME
 var welcome = function(p) { // p could be any variable name
   var x = 0;
   var y = 720;
   var c = 0;
+  var textCol = 243;
   let fontReg;
+  var clouds;
   p.preload = function() {
     fontReg = p.loadFont('Gidole-Regular.otf');
+    clouds = p.loadImage('clouds.jpg')
   }
   p.setup = function() {
     var cnv = p.createCanvas(720, 480);
@@ -88,27 +89,33 @@ var welcome = function(p) { // p could be any variable name
   };
 
   p.draw = function() {
+    //  p.image(clouds, 0, 0, clouds.width, clouds.height);
     c++;
-    if(c == 1000)
-    { x = 0; y = 720; }
+    if (c == 1000) {
+      x = 0;
+      textCol = 243;
+      y = 720;
+    }
     p.textFont(fontReg);
     //  p.clear();
     p.fill("white");
     p.rect(0, 0, 720, 480);
 
-    if (x != 720 / 3)
+    if (x != 720 / 4)
       x++;
     if (y != 400)
       y--;
+    if (textCol != 146)
+      textCol--;
     //p.fill("black")
     //p.rect(20, 20, 680, 440);
     p.textSize(90);
-    p.fill(0, 102, 153);
-    p.text('Welcome, ', x, 480 / 3);
-    p.text('User', y, 480 / 2);
+    p.fill(255, textCol, 20);
+    p.text('Good Morning, ', x, 480 / 3);
+    p.text('Rachel', y, 480 / 2);
 
     p.textSize(20);
-    p.fill(0, 0, 0, 50);
+    p.fill("grey");
     p.text('swipe to see your day', 500, 480 - 480 / 5);
     console.log("x " + x + " y" + y);
   };
@@ -117,17 +124,30 @@ var myp5 = new p5(welcome, 'welcome-layer');
 
 //TIME
 var time = function(p) { // p could be any variable name
-  var x = 100;
-  var y = 100;
+  let c;
   p.setup = function() {
     var cnv = p.createCanvas(720, 480);
     cnv.parent("time-layer");
+    c = p.color(p.random(0, 255), p.random(0, 255), p.random(0, 255));
   };
 
   p.draw = function() {
-    p.background(0);
-    p.fill(255);
-    p.rect(x, y, 50, 50);
+    p.background("white");
+
+    p.textSize(100);
+    p.fill("black");
+
+    p.text(p.hour(), 720 / 5, 270);
+    p.text(p.minute(), 720 / 5 + 160, 270);
+    p.text(p.second(), 720 / 5 + 300, 270);
+
+    if (p.frameCount % 60 == 0) {
+      c = p.color(p.random(130, 255), p.random(175, 255), p.random(230, 255));
+      p.fill(c);
+    }
+    p.fill(c);
+    p.text(":", 720 / 5 + 125, 270);
+    p.text(":", 720 / 5 + 275, 270);
   };
 };
 var myp5 = new p5(time, 'time-layer');

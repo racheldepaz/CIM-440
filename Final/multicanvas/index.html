@@ -9,10 +9,11 @@
     body {
       padding: 0;
       margin: 0;
-      background-color: #ffffe8;
+      background-color: black;
     }
   </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="//js.leapmotion.com/leap-0.6.3.js"></script>
   <script src="p5.js"></script>
   <script src="p5.dom.js"></script>
   <script src="p5.sound.js"></script>
@@ -37,7 +38,6 @@
       position: absolute;
       transform: translateX(0px) scale(1.5);
       z-index: 99;
-      border: 2px solid gray;
       transition: all .5s;
     }
 
@@ -47,7 +47,6 @@
       position: absolute;
       transform: translateX(-270px);
       z-index: 9;
-      border: 2px solid gray;
       transition: all .5s;
     }
 
@@ -57,7 +56,6 @@
       position: absolute;
       transform: translateX(270px);
       z-index: 9;
-      border: 2px solid gray;
       transition: all .5s;
     }
 
@@ -70,9 +68,6 @@
       color: gray;
       text-align: center;
       line-height: 30px;
-      /* position: absolute;
-      top: 50%;
-      left: 20%; */
     }
 
     #pre:hover {
@@ -99,7 +94,7 @@
     }
 
     #slideContainer {
-      width: 729px;
+      width: 720px;
       margin: 0 auto;
 
     }
@@ -125,15 +120,11 @@
     <div id="slideContainer">
 
       <div id="welcome-layer">
-        <!--  <img src="welcome.jpg" height="100%" width="100%" /
-        <script src="welcome.js"></script>-->
       </div>
       <div id="weather-layer">
-        <!--<img src="weather.png" height="100%" width="100%" />
-        <script src="weather.js"></script>-->
+        <img src="sun.jpg" height="100%" width="100%" />
       </div>
       <div id="time-layer">
-      <!--  <img src="time.png" height="100%" width="100%" />-->
       </div>
 
     </div>
