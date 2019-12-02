@@ -65,3 +65,54 @@ $(document).ready(function(){
         }
     });
 });
+
+//WEATHER
+var weather = function( p ) { // p could be any variable name
+  var x = 100;
+  var y = 100;
+  p.setup = function() {
+    var cnv = p.createCanvas(720, 480);
+    cnv.parent("weather-layer");
+  };
+
+  p.draw = function() {
+    p.background(0);
+    p.fill(255);
+    p.rect(x,y,50,50);
+  };
+};
+var myp5 = new p5(weather, 'weather-layer');
+
+//WELCOME
+var welcome = function( p ) { // p could be any variable name
+  var x = 100;
+  var y = 100;
+  p.setup = function() {
+    var cnv = p.createCanvas(720, 480);
+    cnv.parent("welcome-layer");
+  };
+
+  p.draw = function() {
+    p.background(0);
+    p.fill(255);
+    p.rect(x,y,50,50);
+  };
+};
+var myp5 = new p5(welcome, 'welcome-layer');
+
+//TIME
+var time = function( p ) { // p could be any variable name
+  var x = 100;
+  var y = 100;
+  p.setup = function() {
+    var cnv = p.createCanvas(720, 480);
+    cnv.parent("time-layer");
+  };
+
+  p.draw = function() {
+    p.background(0);
+    p.fill(255);
+    p.rect(x,y,50,50);
+  };
+};
+var myp5 = new p5(time, 'time-layer');
