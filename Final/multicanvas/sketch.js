@@ -57,19 +57,29 @@ $(document).ready(function() {
 });
 
 //WEATHER
-/*var weather = function(p) { // p could be any variable name
+var weather = function(p) { // p could be any variable name
+  let we;
   p.setup = function() {
     var cnv = p.createCanvas(720, 480);
     cnv.parent("weather-layer");
+    p.loadJSON("http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=bf1f3e93443e1d0df538e182402c98c3", gotData);
   };
 
+  function gotData(data) {
+    we = data;
+  }
   p.draw = function() {
     p.background(255);
+    if (we) {
+      console.log("gottem");
+      p.textSize(100);
+      p.text(we.main.temp, 100, 100);
+    }
     //p.fill("white");
     //p.rect(x, y, 50, 50);
   };
 };
-var myp5 = new p5(weather, 'weather-layer');*/
+var myp5 = new p5(weather, 'weather-layer');
 
 //WELCOME
 var welcome = function(p) { // p could be any variable name
@@ -79,10 +89,12 @@ var welcome = function(p) { // p could be any variable name
   var textCol = 243;
   let fontReg;
   var clouds;
+
   p.preload = function() {
     fontReg = p.loadFont('Gidole-Regular.otf');
     clouds = p.loadImage('clouds.jpg')
-  }
+  };
+
   p.setup = function() {
     var cnv = p.createCanvas(720, 480);
     cnv.parent("welcome-layer");
@@ -117,7 +129,7 @@ var welcome = function(p) { // p could be any variable name
     p.textSize(20);
     p.fill("grey");
     p.text('swipe to see your day', 500, 480 - 480 / 5);
-    console.log("x " + x + " y" + y);
+  //  console.log("x " + x + " y" + y);
   };
 };
 var myp5 = new p5(welcome, 'welcome-layer');
