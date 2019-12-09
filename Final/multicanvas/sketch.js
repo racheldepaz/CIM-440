@@ -96,6 +96,7 @@ var weather = function(p) { // p could be any variable name
 
     let url1 = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&APPID=bf1f3e93443e1d0df538e182402c98c3";
     p.loadJSON(url1, gotData);
+    console.log("hi" + url1);
   }
 
   p.draw = function() {
@@ -124,17 +125,24 @@ var weather = function(p) { // p could be any variable name
       icon.hide();
       p.image(icon, 550, 70, icon.width * 1.5, icon.height * 1.5);
 
-      //current humidity
+
       p.textSize(30);
-      p.text("Humidity: ", 80, 220);
-      p.text(Math.round(we.main.humidity) + "%", 200, 221);
+      //Min/max Temp
+      p.text("Min/Max: ", 80, 200);
+      p.text(Math.round(we.main.temp_min) + "° / " + Math.round(we.main.temp_max) + "°" , 210, 201);
+
+      //current humidity
+      p.textSize(25);
+      p.text("Humidity: ", 80, 230);
+      p.text(Math.round(we.main.humidity) + "%", 200, 231);
+
     }
 
   };
 };
 var myp5 = new p5(weather, 'weather-layer');
 
-//WELCOME
+/*/WELCOME
 var welcome = function(p) { // p could be any variable name
   var x = 0;
   var y = 720;
@@ -220,4 +228,4 @@ var time = function(p) { // p could be any variable name
     p.text(":", 720 / 5 + 275, 270);
   };
 };
-var myp5 = new p5(time, 'time-layer');
+var myp5 = new p5(time, 'time-layer');*/
