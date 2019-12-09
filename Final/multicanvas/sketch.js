@@ -58,25 +58,78 @@ $(document).ready(function() {
 
 //WEATHER
 var weather = function(p) { // p could be any variable name
-  let we;
+  let we; //weather data
+  let font;
+  let icon;
+
+  var lat = 0;
+  var lon = 0;
+  var clX = 15;
+  var clY = 50;
+  var down = true;
+
+  p.preload = function() {
+    getLocation();
+    font = p.loadFont("Gidole-Regular.otf");
+  }
   p.setup = function() {
     var cnv = p.createCanvas(720, 480);
     cnv.parent("weather-layer");
-    p.loadJSON("http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=bf1f3e93443e1d0df538e182402c98c3", gotData);
+    p.textFont(font);
   };
 
   function gotData(data) {
     we = data;
   }
+
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      p.text("Geolocation permissions denied", 100, 100);
+    }
+  }
+
+  function showPosition(position) {
+    lat = position.coords.latitude;
+    lon = position.coords.longitude;
+
+    let url1 = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&APPID=bf1f3e93443e1d0df538e182402c98c3";
+    p.loadJSON(url1, gotData);
+  }
+
   p.draw = function() {
     p.background(255);
     if (we) {
-      console.log("gottem");
-      p.textSize(100);
-      p.text(we.main.temp, 100, 100);
+      p.textSize(40);
+      console.log(we.name);
+      p.text("Detected Location: " + we.name, clX, clY);
+      if (clY <= 45)
+        down = true;
+      else if (clY >= 55)
+        down = false;
+
+      //    hovering text, deleted because it's ugly if (!down)
+      //      clY -= 0.03;
+      //    else
+      //      clY += 0.03;
+
+      //the current temp
+      p.text("Current temperature: ", 80, 160);
+      p.textSize(75);
+      p.text(Math.round(we.main.temp) + "°", 450, 170);
+
+      //icon describing current temp
+      icon = p.createImg("http://openweathermap.org/img/wn/" + we.weather[0].icon + "@2x.png");
+      icon.hide();
+      p.image(icon, 550, 70, icon.width * 1.5, icon.height * 1.5);
+
+      //current humidity
+      p.textSize(30);
+      p.text("Humidity: ", 80, 220);
+      p.text(Math.round(we.main.humidity) + "%", 200, 221);
     }
-    //p.fill("white");
-    //p.rect(x, y, 50, 50);
+
   };
 };
 var myp5 = new p5(weather, 'weather-layer');
@@ -88,11 +141,11 @@ var welcome = function(p) { // p could be any variable name
   var c = 0;
   var textCol = 243;
   let fontReg;
-  var clouds;
+  let img;
 
   p.preload = function() {
     fontReg = p.loadFont('Gidole-Regular.otf');
-    clouds = p.loadImage('clouds.jpg')
+    //  img = p.loadImage('clouds.jpg')
   };
 
   p.setup = function() {
@@ -101,7 +154,7 @@ var welcome = function(p) { // p could be any variable name
   };
 
   p.draw = function() {
-    //  p.image(clouds, 0, 0, clouds.width, clouds.height);
+    //  p.image(img, 0, 0);
     c++;
     if (c == 1000) {
       x = 0;
@@ -129,7 +182,7 @@ var welcome = function(p) { // p could be any variable name
     p.textSize(20);
     p.fill("grey");
     p.text('swipe to see your day', 500, 480 - 480 / 5);
-  //  console.log("x " + x + " y" + y);
+    //  console.log("x " + x + " y" + y);
   };
 };
 var myp5 = new p5(welcome, 'welcome-layer');
@@ -137,6 +190,11 @@ var myp5 = new p5(welcome, 'welcome-layer');
 //TIME
 var time = function(p) { // p could be any variable name
   let c;
+  let img;
+
+  p.preload = function() {
+    img = p.loadImage("clouds.jpg");
+  }
   p.setup = function() {
     var cnv = p.createCanvas(720, 480);
     cnv.parent("time-layer");
@@ -145,7 +203,7 @@ var time = function(p) { // p could be any variable name
 
   p.draw = function() {
     p.background("white");
-
+    p.image(img, 0, 0);
     p.textSize(100);
     p.fill("black");
 
