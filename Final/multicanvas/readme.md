@@ -1,6 +1,9 @@
 # hello, world
 hello, world is a swipeable user interface meant to give tech-savvy users a quick insight on their day’s goals and outlooks.
 
+
+[Video](https://youtu.be/Mer5qNDE5uc)
+
 ## About the project
 I wanted to make hello, world to combine all that I've learned this semester and become familiar with reactjs, jquery and how to use an api. Throughout the development process, I realized that using p5's text and canvas tools would be easier than using reactjs for my purposes. I used OpenWeatherAPI for the weather canvas, more specifically the daily weather and 5-day/3 hour forecast APIs. I used JQuery to create the rotating canvas elements and seperated each of the 3 "cards" with the welcome screen, time, and weather as 3 distinct p5 canvases. Weather conditions are given to users based on their physical coordinates, which are obtained from a geolocation API. 
 
