@@ -6,7 +6,7 @@ I wanted to make hello, world to combine all that I've learned this semester and
 
 I was originally going to use Leap Motion, but had trouble integrating it to recognize hand gestures, as this is only a Unity functionality. This project is viewable on Magic Leap's Helio browser. The black background allows for the transparent effect to occur when viewed with a headset. 
 
-## Inputs, Outputs
+### Inputs, Outputs
 Inputs: Your physical location, local time, and embedded next and previous buttons.
 Outputs: 3 rotating canvases with location and time-accurate data. 
 
