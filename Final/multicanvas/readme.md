@@ -13,7 +13,7 @@ Outputs: 3 rotating canvases with location and time-accurate data.
 ### Libraries Used
 I used p5js, JQuery, OpenWeather API, and Geolocation.
 
-##### Source Credit
+### Source Credit
 JQuery source code for the rotating canvases was obtained from public [repository](https://github.com/DaftCreation/Card-Slider)
 
 Background image in time canvas is royalty free stock photo with ID: 1195456621. "Abstract color of clouds and sky on pink in sunshine for texture background." by Nopphinan ["https://www.shutterstock.com/image-photo/abstract-color-clouds-sky-on-pink-1195456621"]
