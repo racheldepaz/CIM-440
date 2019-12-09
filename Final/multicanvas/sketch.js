@@ -59,14 +59,21 @@ $(document).ready(function() {
 //WEATHER
 var weather = function(p) { // p could be any variable name
   let we; //weather data
+  let hrwe;
   let font;
   let icon;
+  var icons = ["", "", "", "", "", ""];
 
   var lat = 0;
   var lon = 0;
   var clX = 15;
   var clY = 50;
   var down = true;
+  var t = 0; //time
+
+  var hrXTime = 60; var hrYTime = 290;
+  var iconX = 30; var iconY = 260;
+  var weatherX = hrXTime + 15; var weatherY = hrYTime + 135;
 
   p.preload = function() {
     getLocation();
@@ -82,11 +89,15 @@ var weather = function(p) { // p could be any variable name
     we = data;
   }
 
+  function gotHourlyData(data) {
+    hrwe = data;
+  }
+
   function getLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
     } else {
-      p.text("Geolocation permissions denied", 100, 100);
+      p.text("Geolocation permissions denied", p.width / 2, p.height / 2);
     }
   }
 
@@ -95,11 +106,35 @@ var weather = function(p) { // p could be any variable name
     lon = position.coords.longitude;
 
     let url1 = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&APPID=bf1f3e93443e1d0df538e182402c98c3";
+    let url2 = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=imperial&APPID=bf1f3e93443e1d0df538e182402c98c3";
     p.loadJSON(url1, gotData);
-    console.log("hi" + url1);
+    p.loadJSON(url2, gotHourlyData);
+    //
+  //console.log("url2: " + url2);
+    //  console.log("hi" + url1);
+  }
+
+
+  function drawHourlyForecast() {
+    for(var i = 0; i < 6; i++){
+      t = t + (2*i + 1);
+      if(t>24)
+       t = t- 24;
+       else {
+         t = t;
+       }
+      //console.log(t);
+      icons[i] = p.createImg("http://openweathermap.org/img/wn/" + hrwe.list[i].weather[0].icon + "@2x.png");
+      icons[i].hide();
+
+      p.text(t + ":00", hrXTime + (140*i), hrYTime);
+      p.image(icons[i], iconX + (140*i), iconY, icons[i].width * 1.5, icons[i].height * 1.5);
+      p.text(Math.round(hrwe.list[i].main.temp) + "°", weatherX + (140 * i), weatherY);
+    }
   }
 
   p.draw = function() {
+    t = p.hour() + 7;
     p.background(255);
     if (we) {
       p.textSize(40);
@@ -109,11 +144,6 @@ var weather = function(p) { // p could be any variable name
         down = true;
       else if (clY >= 55)
         down = false;
-
-      //    hovering text, deleted because it's ugly if (!down)
-      //      clY -= 0.03;
-      //    else
-      //      clY += 0.03;
 
       //the current temp
       p.text("Current temperature: ", 80, 160);
@@ -129,20 +159,24 @@ var weather = function(p) { // p could be any variable name
       p.textSize(30);
       //Min/max Temp
       p.text("Min/Max: ", 80, 200);
-      p.text(Math.round(we.main.temp_min) + "° / " + Math.round(we.main.temp_max) + "°" , 210, 201);
+      p.text(Math.round(we.main.temp_min) + "° / " + Math.round(we.main.temp_max) + "°", 210, 201);
 
       //current humidity
       p.textSize(25);
       p.text("Humidity: ", 80, 230);
       p.text(Math.round(we.main.humidity) + "%", 200, 231);
 
+      //hourly uodate
+      p.textSize(40);
+
+      drawHourlyForecast();
     }
 
   };
 };
 var myp5 = new p5(weather, 'weather-layer');
 
-/*/WELCOME
+//WELCOME
 var welcome = function(p) { // p could be any variable name
   var x = 0;
   var y = 720;
@@ -228,4 +262,4 @@ var time = function(p) { // p could be any variable name
     p.text(":", 720 / 5 + 275, 270);
   };
 };
-var myp5 = new p5(time, 'time-layer');*/
+var myp5 = new p5(time, 'time-layer');
